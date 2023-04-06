@@ -1,0 +1,11 @@
+- name: installing a package
+  yum:
+    name: "{{ package_name }}"
+    update_cache: yes
+    state: present
+  register: task_result
+  notify: 
+    - copy_files_handler
+    - copy_template_handler
+    - Restart_package_handler
+

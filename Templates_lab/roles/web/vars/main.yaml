@@ -1,0 +1,7 @@
+package_name: httpd
+files_name:
+  - style.css
+template_file: index.html.j2
+header: The Home Page 
+Myname: Abdelrahman Elmansey
+track: Cloud Platform Development

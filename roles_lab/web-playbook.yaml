@@ -1,0 +1,4 @@
+- name: the server initialization
+  hosts: web_servers
+  roles:
+    - web

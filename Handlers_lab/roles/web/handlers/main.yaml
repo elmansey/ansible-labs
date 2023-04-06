@@ -1,0 +1,14 @@
+- name: copy_files_handler
+  copy:
+    src: "{{ item }}"
+    dest: /var/www/html/
+  loop: "{{ files_name }}"
+  register: copying_result
+
+
+
+- name: Restart_package_handler
+  systemd:
+    name: "{{ package_name }}"
+    state: started
+

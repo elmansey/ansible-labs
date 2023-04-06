@@ -1,0 +1,24 @@
+- name: installing a package
+  yum:
+    name: "{{ package_name }}"
+    update_cache: yes
+    state: present
+  register: installing_result
+
+
+- name: copy files 
+  copy:
+    src: "{{ item }}" 
+    dest: /var/www/html/
+  loop: "{{ files_name }}"
+  register: copying_result
+  when: installing_result.changed == true
+
+
+
+- name: Restart package 
+  systemd:
+    name: "{{ package_name }}"
+    state: started
+  when: copying_result.changed == true
+
